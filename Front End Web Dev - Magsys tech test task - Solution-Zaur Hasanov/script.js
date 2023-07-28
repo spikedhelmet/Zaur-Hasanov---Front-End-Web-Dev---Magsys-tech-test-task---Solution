@@ -4,6 +4,16 @@ const factItemsArr = document.querySelectorAll(`.factItem`);
 factItemsArr.forEach((item) => $(item).hide()); //Hiding accordiong content via jQuery
 
 //////////////////////////////////////////////////////////
+// Preloading the images for better performance
+function preloadImage(url) {
+  var img = new Image();
+  img.src = url;
+  // img.onload = () => console.log(`${url} has loaded`);
+}
+for (let i = 1; i <= 10; i++) {
+  preloadImage([`/images/cat-${i}.jpg`]);
+}
+//////////////////////////////////////////////////////////
 // I copied this helper function from the internet
 const generatedRandomNums = new Set();
 function uniqueRandomNum(range) {
@@ -57,7 +67,7 @@ function toggleOpen(factItem) {
 }
 
 function toggleClose(factItem) {
-  $(factItem).slideUp(400);
+  $(factItem).slideUp(800);
   factItem.classList.remove(`open`);
   factItem.querySelector(`.factDescription`).innerHTML = ``;
   factItem.querySelector(`.imgContainer`).innerHTML = ``;
