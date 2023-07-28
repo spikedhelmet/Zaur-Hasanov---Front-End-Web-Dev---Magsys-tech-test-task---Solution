@@ -5,16 +5,19 @@ factItemsArr.forEach((item) => $(item).hide()); //Hiding accordiong content via 
 
 //////////////////////////////////////////////////////////
 // Preloading the images for better performance
+const preloadedImgArr = [];
 function preloadImage(url) {
-  var img = new Image();
+  const img = new Image();
   img.src = url;
-  // img.onload = () => console.log(`${url} has loaded`);
+  img.classList.add(`factImg`);
+  img.alt = `A picture of a cat`;
+  preloadedImgArr.push(img);
 }
-for (let i = 1; i <= 10; i++) {
-  preloadImage([`/images/cat-${i}.jpg`]);
+for (let i = 1; i < 11; i++) {
+  preloadImage(`/images/cat-${i}.jpg`);
 }
+
 //////////////////////////////////////////////////////////
-// I copied this helper function from the internet
 const generatedRandomNums = new Set();
 function uniqueRandomNum(range) {
   if (generatedRandomNums.size === range) {
@@ -22,7 +25,7 @@ function uniqueRandomNum(range) {
   }
   let randomNum;
   do {
-    randomNum = Math.floor(Math.random() * range) + 1;
+    randomNum = Math.floor(Math.random() * range);
   } while (generatedRandomNums.has(randomNum));
   generatedRandomNums.add(randomNum);
   return randomNum;
@@ -45,12 +48,8 @@ const callCatFact = async function () {
 
 function renderFactImg(factItem) {
   const imgContainer = factItem.querySelector(`.imgContainer`);
-  const img = document.createElement("img");
-  img.classList.add(`factImg`);
-  img.src = `/images/cat-${uniqueRandomNum(10)}.jpg`;
-  img.alt = `A picture of a cat`;
-  imgContainer.innerHTML = ``;
-  imgContainer.appendChild(img);
+  const randomImg = preloadedImgArr[uniqueRandomNum(10)];
+  imgContainer.insertAdjacentElement(`afterbegin`, randomImg);
 }
 
 function renderFactDescription(fact, factDescription) {
@@ -62,12 +61,12 @@ function renderFactDescription(fact, factDescription) {
 // Open-Close functions
 function toggleOpen(factItem) {
   // I made the animation a bit long to make up for the API fetching time
-  $(factItem).slideDown(800);
+  $(factItem).slideDown(400);
   factItem.classList.add(`open`);
 }
 
 function toggleClose(factItem) {
-  $(factItem).slideUp(800);
+  $(factItem).slideUp(400);
   factItem.classList.remove(`open`);
   factItem.querySelector(`.factDescription`).innerHTML = ``;
   factItem.querySelector(`.imgContainer`).innerHTML = ``;
