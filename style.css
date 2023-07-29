@@ -78,6 +78,7 @@ body {
 
 .accordionItem {
   border-bottom: 2px solid #e9b384;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 
   align-items: center;
   margin-bottom: 10px;
