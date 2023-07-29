@@ -48,6 +48,7 @@ const callCatFact = async function () {
 
 function renderFactImg(factItem) {
   const imgContainer = factItem.querySelector(`.imgContainer`);
+  imgContainer.innerHTML = ``;
   const randomImg = preloadedImgArr[uniqueRandomNum(10)];
   imgContainer.insertAdjacentElement(`afterbegin`, randomImg);
 }
