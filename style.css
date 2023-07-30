@@ -1,5 +1,12 @@
 :root {
+  --body-bg-color: #f5f5f5;
+  --bg-color: #f4f2de;
+  --font-color: #31302c;
+  --border-color: #e9b384;
+  --box-shadow-light: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+
   --transition-short: ease-in-out 0.2s;
+  --transition-4ms: ease-in-out 0.4s;
   --border-radius-m: 9px;
 }
 
@@ -8,7 +15,7 @@
 }
 
 body {
-  background-color: #f5f5f5;
+  background-color: var(--body-bg-color);
   font-family: "Signika", sans-serif;
 }
 
@@ -41,7 +48,6 @@ body {
 .factsHeading {
   color: #db8940;
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   text-align: center;
 
@@ -77,8 +83,8 @@ body {
 }
 
 .accordionItem {
-  border-bottom: 2px solid #e9b384;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  border-bottom: 2px solid var(--border-color);
+  box-shadow: var(--box-shadow-light);
 
   align-items: center;
   margin-bottom: 10px;
@@ -87,8 +93,12 @@ body {
   border-radius: 9px;
   transition: var(--transition-short);
 
-  background-color: #f4f2de;
-  color: #31302c;
+  background-color: var(--bg-color);
+  color: var(--font-color);
+
+  .itemHead {
+    border-radius: 9px;
+  }
 
   @media screen and (max-width: 1000px) {
     max-width: 850px;
@@ -122,20 +132,24 @@ body {
 }
 
 .accordionItem:hover {
-  background-color: #31302c;
-  color: #fcfbf5;
+  background-color: var(--font-color);
+  color: var(--body-bg-color);
   transition: var(--transition-short);
   /* To avoid a visual glitch I didn't remove the border */
-  border-bottom: 2px solid #31302c;
+  border-bottom: 2px solid var(--font-color);
 
   & .logo {
     filter: invert(100%);
     transition: var(--transition-short);
   }
+
+  & .lightBorder {
+    background-color: #1d1d1a;
+  }
 }
 
 .blendBorder {
-  border-bottom: 2px solid #f4f2de !important;
+  border-bottom: 2px solid var(--bg-color) !important;
 }
 
 .accordionItem:last-child {
@@ -189,5 +203,6 @@ body {
 }
 
 .lightBorder {
-  box-shadow: 0 0 2px 1px #e9b38457;
+  background-color: var(--body-bg-color);
+  box-shadow: var(--box-shadow-light);
 }
