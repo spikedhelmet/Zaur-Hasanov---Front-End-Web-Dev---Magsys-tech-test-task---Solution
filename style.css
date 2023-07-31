@@ -138,10 +138,10 @@ body {
   /* To avoid a visual glitch I didn't remove the border */
   border-bottom: 2px solid var(--font-color);
 
-  & .logo {
+  /* & .logo {
     filter: invert(100%);
     transition: var(--transition-short);
-  }
+  } */
 
   & .lightBorder {
     background-color: #1d1d1a;

@@ -143,6 +143,21 @@ function removeDivider() {
 }
 removeDivider();
 
+//
+function logonInvert() {
+  const logoItem = accordionItemsArr[accordionItemsArr.length - 1];
+  logoItem.addEventListener(`mouseover`, () => {
+    setTimeout(() => {
+      logoItem.querySelector(`img`).src = "./logos/Logo_inverted.svg";
+    }, 100);
+  });
+  logoItem.addEventListener(`mouseout`, () => {
+    setTimeout(() => {
+      logoItem.querySelector(`img`).src = "./logos/Logo.svg";
+    }, 100);
+  });
+}
+logonInvert();
 // TODOS:
 // Each item consists of 3 columns: number, “Click to open fact”, plus sign.✅
 // Toggle accordion item on click ✅
