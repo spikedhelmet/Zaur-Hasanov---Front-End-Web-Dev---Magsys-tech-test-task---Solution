@@ -205,4 +205,5 @@ body {
 .lightBorder {
   background-color: var(--body-bg-color);
   box-shadow: var(--box-shadow-light);
+  transition: var(--transition-short);
 }
