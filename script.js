@@ -14,7 +14,7 @@ function preloadImage(url) {
   preloadedImgArr.push(img);
 }
 for (let i = 1; i < 11; i++) {
-  preloadImage(`/images/cat-${i}.jpg`);
+  preloadImage(`./images/cat-${i}.jpg`);
 }
 
 //////////////////////////////////////////////////////////
@@ -45,6 +45,17 @@ const callCatFact = async function () {
     throw err;
   }
 };
+
+// let imgIndex = 0;
+// function renderFactImg(factItem) {
+//   const imgContainer = factItem.querySelector(`.imgContainer`);
+//   imgContainer.innerHTML = ``;
+
+//   const randomImg = preloadedImgArr[imgIndex];
+//   imgIndex = (imgIndex + 1) % preloadedImgArr.length;
+
+//   imgContainer.insertAdjacentElement(`afterbegin`, randomImg);
+// }
 
 function renderFactImg(factItem) {
   const imgContainer = factItem.querySelector(`.imgContainer`);
